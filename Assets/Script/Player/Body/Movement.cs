@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
     private float moveSpeed;
     private float moveZ, moveX;
     private Rigidbody rb;
+    [SerializeField]
+    public bool isMoving = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,14 @@ public class Movement : MonoBehaviour
     {
         moveX = Input.GetAxisRaw("Horizontal");
         moveZ = Input.GetAxisRaw("Vertical");
+        if (rb.velocity.x > 0 ||  rb.velocity.z > 0 || rb.velocity.x + rb.velocity.y > 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
     }
     private void FixedUpdate()
     {
@@ -28,5 +38,6 @@ public class Movement : MonoBehaviour
     private void MoveMe()
     {
         rb.velocity = transform.TransformDirection(moveX * moveSpeed, rb.velocity.y, moveZ * moveSpeed);
+
     }
 }
