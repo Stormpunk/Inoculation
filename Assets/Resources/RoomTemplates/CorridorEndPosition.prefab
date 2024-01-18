@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1276635303327994089}
   - component: {fileID: 1429436051630728025}
+  - component: {fileID: 8321052815308451699}
   m_Layer: 0
   m_Name: CorridorEndPosition
   m_TagString: EndPosition
@@ -46,6 +47,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.3464465, y: 4.7816277, z: 1}
   m_Center: {x: 0.35594296, y: 0.40061706, z: 0}
+--- !u!114 &8321052815308451699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242396680254227867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a517935060e0a46980c7131d4b01b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomGenerator: {fileID: 0}
 --- !u!1 &5860346867514546155
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ef877d8c87c62584aad2c95e05841a7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

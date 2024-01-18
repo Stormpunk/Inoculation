@@ -12,7 +12,7 @@ public class TemplateHolder : MonoBehaviour
     [SerializeField]
     private RoomGenerator roomGenerator;
     private bool roomIsSpawn;
-    private void SpawnNewPrefab()
+    public void SpawnNewPrefab()
     {
         roomGenerator.SpawnPrefab(nextPosition);
         roomIsSpawn = true;
@@ -20,9 +20,9 @@ public class TemplateHolder : MonoBehaviour
     private void Start()
     {
         roomGenerator = GameObject.Find("GameManager").GetComponent<RoomGenerator>();
-        if (!roomIsSpawn && roomGenerator.spawnedRooms < roomGenerator.roomLimit)
+        /*if (!roomIsSpawn && roomGenerator.spawnedRooms < roomGenerator.roomLimit)
         {
             SpawnNewPrefab();
-        }
+        } */
     }
 }
