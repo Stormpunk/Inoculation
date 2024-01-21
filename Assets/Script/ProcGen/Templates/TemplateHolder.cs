@@ -5,24 +5,24 @@ using UnityEngine;
 public class TemplateHolder : MonoBehaviour
 {
     [SerializeField]
-    //private List<Transform> nextPositionTransform = new List<Transform>();
-    public Transform nextPosition;
-    [SerializeField]
-    public Transform lastPositionTransform;
+    public ExitPoint thisExitPoint;
     [SerializeField]
     private RoomGenerator roomGenerator;
+    [SerializeField]
     private bool roomIsSpawn;
-    public void SpawnNewPrefab()
+    public bool RoomIsSPawn
     {
-        roomGenerator.SpawnPrefab(nextPosition);
-        roomIsSpawn = true;
+        get { return roomIsSpawn; }
+        set { roomIsSpawn = value; }
     }
     private void Start()
     {
         roomGenerator = GameObject.Find("GameManager").GetComponent<RoomGenerator>();
+        thisExitPoint = GetComponentInChildren<ExitPoint>();
         /*if (!roomIsSpawn && roomGenerator.spawnedRooms < roomGenerator.roomLimit)
         {
             SpawnNewPrefab();
         } */
     }
+
 }

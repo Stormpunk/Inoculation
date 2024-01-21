@@ -26,7 +26,7 @@ public class Blossom : MonoBehaviour {
             r.material = material;
         }
 
-        material.SetFloat(AMOUNT, currentAmount);
+        //material.SetFloat(AMOUNT, currentAmount);
         animate = false;
     }
 

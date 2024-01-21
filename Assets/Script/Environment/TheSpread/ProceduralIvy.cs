@@ -24,8 +24,8 @@ public class ProceduralIvy : MonoBehaviour {
 
     int ivyCount = 0;
 
-    private bool hasSpawned = false;
-
+    public bool hasSpawned = false;
+    [SerializeField]
     private Vector3 moveTowards;
     public Vector3 MoveToPosition
     {
@@ -48,11 +48,10 @@ public class ProceduralIvy : MonoBehaviour {
             }
         }
        */
-        if(hasSpawned == false)
+       /* if(hasSpawned == false)
         {
             CreateFromPoint();
-            hasSpawned = true;  
-        }
+        }*/
 
     }
     private IEnumerator WaitUntilFullyGrown()
@@ -60,12 +59,13 @@ public class ProceduralIvy : MonoBehaviour {
         //count until the currently created vines are fully grown
         yield return null;
     }
-    private void CreateFromPoint()
+    public void CreateFromPoint(Transform myPos)
     {
         RaycastHit hit;
-        if(Physics.Raycast(this.gameObject.transform.position,this.gameObject.transform.TransformDirection(Vector3.down), out hit))
+        if(Physics.Raycast(myPos.position,myPos.TransformDirection(Vector3.down), out hit))
         {
             createIvy(hit);
+            Debug.Log("Spawning Ivy");
         }
     }
 
@@ -85,17 +85,18 @@ public class ProceduralIvy : MonoBehaviour {
         for (int i = 0; i < branches; i++) {
             Vector3 dir = Quaternion.AngleAxis(360 / branches * i + Random.Range(0, 360 / branches), hit.normal) * tangent;
             List<IvyNode> nodes = createBranch(maxPointsForBranch, hit.point, hit.normal, dir);
-            float furthestDist = new float();
+           /* float furthestDist = float.MinValue;
             foreach (var node in nodes)
             {
                 float dist = Vector3.Distance(new Vector3(0f, 0f, this.transform.position.z), new Vector3(0,0,node.getPosition().z));
                 if (dist > furthestDist)
                 {
+
                     furthestDist = dist;
                     moveTowards = node.getPosition();
                     Debug.Log($"Movetowards = {moveTowards.ToString()}");
                 }
-            }
+            } */
             GameObject branch = new GameObject("Branch " + i);
             Branch b = branch.AddComponent<Branch>();
             if (!wantBlossoms) {
@@ -108,7 +109,6 @@ public class ProceduralIvy : MonoBehaviour {
 
         ivyCount++;
     }
-
     Vector3 calculateTangent(Vector3 p0, Vector3 p1, Vector3 normal) {
         var heading = p1 - p0;
         var distance = heading.magnitude;

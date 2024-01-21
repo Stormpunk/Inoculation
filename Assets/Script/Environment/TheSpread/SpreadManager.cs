@@ -8,29 +8,46 @@ public class SpreadManager : MonoBehaviour
     [SerializeField] private Transform killTransform;
     [SerializeField] private GameObject player;
     [SerializeField] private float moveSpeed;
-    [Space]
-    private bool canSpawnSpread = true;
+    [SerializeField] private float spawnDelay;
+    [SerializeField] private bool readyToSpawn = false;
 
     private void Start()
     {
-
+        spawnDelay = 2f;
     }
     private void Update()
     {
-        MoveToTransform();
+        //StartCoroutine(MoveToTransform());
+        if(readyToSpawn == true)
+        {
+            readyToSpawn = false;
+            StartCoroutine(MoveToTransform());
+        } 
     }
 
 
-    private void MoveToTransform()
+    IEnumerator MoveToTransform()
     {
-        if (canSpawnSpread && Vector3.Distance(new Vector3(0, 0, this.transform.position.z), new Vector3(0, 0, mySpreadSpawner.MoveToPosition.z)) < 0.01f) 
+        mySpreadSpawner.CreateFromPoint(this.transform);
+        while (spawnDelay > 0)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, mySpreadSpawner.MoveToPosition, moveSpeed);
+            spawnDelay -=  Time.deltaTime;
+            Vector3 targetDirection = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 5);
+            this.transform.position += new Vector3(0, 0, 1) * (Time.deltaTime * moveSpeed);
+            //   = Vector3.MoveTowards(this.transform.position, targetDirection, moveSpeed);
+            //Debug.Log("Moving Towards " + mySpreadSpawner.MoveToPosition.ToString());
+            yield return null;
         }
+        Debug.Log("iF you see me multiple times a second there's aproblem");
+        spawnDelay = 2;
+        readyToSpawn = true;
 
-        if(Vector3.Distance(new Vector3(0,0,this.transform.position.z), new Vector3(0,0,mySpreadSpawner.MoveToPosition.z)) > 0.01f)
+        //mySpreadSpawner.hasSpawned = false;
+        
+        /*
+        if(mySpreadSpawner.hasSpawned = false && Vector3.Distance(new Vector3(0,0,this.transform.position.z), new Vector3(0,0,mySpreadSpawner.MoveToPosition.z)) > 0.01f)
         {
-
-        }
+            Debug.Log("Boop");
+        } */
     }
 }

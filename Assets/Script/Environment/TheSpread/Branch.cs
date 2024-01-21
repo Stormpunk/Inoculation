@@ -28,8 +28,6 @@ public class Branch : MonoBehaviour {
     bool animate;
     float growthSpeed = 2;
     float currentAmount = -1;
-
-    private Vector3 colliderMoveTowardsTransform;
     public Vector3 moveTowardsPosition;
 
     public void init(List<IvyNode> branchNodes, float branchRadius, Material material) {
@@ -90,7 +88,6 @@ public class Branch : MonoBehaviour {
                 animate = false;
                 material.SetFloat(AMOUNT, MAX);
                 MeshManager.instance.addMesh(transform, meshFilter.mesh, meshRenderer.sharedMaterial);
-                colliderMoveTowardsTransform = branchNodes[branchNodes.Count - 1].getPosition();
             }
         }
 
@@ -254,13 +251,6 @@ public class Branch : MonoBehaviour {
             }
         }
 
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if( other.gameObject.tag == "Player")
-        {
-            Debug.Log("Hit Player");
-        }
     }
 
 }

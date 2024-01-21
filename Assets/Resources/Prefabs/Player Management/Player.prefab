@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7178018544030672056}
   - component: {fileID: 7178018544030672063}
   - component: {fileID: 7178018544030672060}
+  - component: {fileID: 3676827694804566964}
+  - component: {fileID: 6735131084306363983}
+  - component: {fileID: 5736167897089998050}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -131,6 +134,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3676827694804566964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178018544030672057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954d703436d430c48919977787a18f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6735131084306363983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178018544030672057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e81e8a096b7e441b593cd8f4446a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  infection: 0
+  fatigue: 0
+--- !u!114 &5736167897089998050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178018544030672057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ff8481f3a4b8f469343eec38f435ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRb: {fileID: 0}
+  deathField: {fileID: 0}
+  safeDistance: 0
 --- !u!1 &7178018544095689656
 GameObject:
   m_ObjectHideFlags: 0

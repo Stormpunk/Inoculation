@@ -6,17 +6,25 @@ public class EntrySpawnTrigger : MonoBehaviour
 {
     [SerializeField] 
     private RoomGenerator roomGenerator;
+    [SerializeField]
     private TemplateHolder thisRoom;
 
     private void Start()
     { 
         thisRoom = GetComponentInChildren<TemplateHolder>();
+        roomGenerator = GameObject.FindWithTag("Gamemanager").gameObject.GetComponent<RoomGenerator>();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if(other.gameObject.tag == "Player")
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit) && hit.transform.tag == "Player" || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit) && hit.transform.tag == "Player") 
         {
-            thisRoom.SpawnNewPrefab();
+            if (!thisRoom.RoomIsSPawn)
+            {
+                roomGenerator.SpawnPrefab(thisRoom.thisExitPoint.transform);
+                thisRoom.RoomIsSPawn = true;
+            }
         }
     }
 }
