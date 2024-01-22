@@ -10,6 +10,8 @@ public class SpreadManager : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float spawnDelay;
     [SerializeField] private bool readyToSpawn = false;
+    [SerializeField] private int floatingMesh;
+    //how many instances of the spread exists that hasn't been merged into a mesh
 
     private void Start()
     {
@@ -23,12 +25,19 @@ public class SpreadManager : MonoBehaviour
             readyToSpawn = false;
             StartCoroutine(MoveToTransform());
         } 
+        if(floatingMesh > 3)
+        {
+            mySpreadSpawner.combineAndClear();
+            floatingMesh = 0;
+        }
     }
 
 
     IEnumerator MoveToTransform()
     {
         mySpreadSpawner.CreateFromPoint(this.transform);
+        floatingMesh++;
+        //creates a vine and increases the floatingMesh value
         while (spawnDelay > 0)
         {
             spawnDelay -=  Time.deltaTime;

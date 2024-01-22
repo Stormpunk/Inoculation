@@ -27,6 +27,8 @@ public class Stats : MonoBehaviour
         get { return fatigue; }
         set { fatigue = value; }
     }
+    public float MaxFatigue = 100;
+    //if the player reaches 100 fatigue they will no longer be able to operate
     #endregion
     #region Bools
     [Space]

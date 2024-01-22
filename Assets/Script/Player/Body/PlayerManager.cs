@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         safeDistance = playerRb.transform.position.z - deathField.transform.position.z;
-        Debug.Log($"Player infection =  {playerStats.Infection}");
+       // Debug.Log($"Player infection =  {playerStats.Infection}");
         //checks the distance between the death field (vines) and the player
         /*if(safeDistance < 0)
         {
