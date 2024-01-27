@@ -25,8 +25,8 @@ public class EntrySpawnTrigger : MonoBehaviour
             {
                 roomGenerator.SpawnPrefab(thisRoom.thisExitPoint.transform);
                 thisRoom.RoomIsSPawn = true;
+                RandomItemGenerator.Instance.SpawnItem();
             }
-           
         }
     }
 }

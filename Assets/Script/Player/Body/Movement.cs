@@ -34,7 +34,7 @@ public class Movement : MonoBehaviour
         if (rb.velocity.x > 0 ||  rb.velocity.z > 0 || rb.velocity.x + rb.velocity.y > 0)
         {
             isMoving = true;
-            this.GetComponent<Stats>().Fatigue += (0.1f  + speedMultiplier) * Time.deltaTime;
+            this.GetComponent<Stats>().Fatigue += (0.3f  + (speedMultiplier * fatigueMultiplier)) * Time.deltaTime;
         }
         else
         {
@@ -45,24 +45,29 @@ public class Movement : MonoBehaviour
         {
             case float f when f >= 0.0f && f < 10f:
                 moveSpeed = 2;
+                fatigueMultiplier = 1;
                 break;
             case float f when f >= 10f && f < 20f:
-                moveSpeed = 1.5f;
+                moveSpeed = 1.9f;
+                fatigueMultiplier = 1.1f;
                 break;
             case float f when f >= 20f && f < 50f:
-                moveSpeed = 1f;
+                moveSpeed = 1.5f;
+                fatigueMultiplier = 1.5f;
                 break;
             case float f when f >= 50 && f < 75f:
-                moveSpeed = 0.75f;
+                moveSpeed = 1f;
+                fatigueMultiplier = 2f;
                 break;
             case float f when f >= 75 && f < 100f:
-                moveSpeed = 0.5f;
+                moveSpeed = 0.75f;
+                fatigueMultiplier = 2.5f;
                 break;
 
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speedMultiplier = 2;
+            speedMultiplier = 1.75f;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {

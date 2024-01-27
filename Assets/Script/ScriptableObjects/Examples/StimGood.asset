@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8775d550cd5c3344a015ad8e738fbb5, type: 3}
   m_Name: StimGood
   m_EditorClassIdentifier: 
-  itemDescription: 
+  itemName: StimGood
+  itemDescription: An adrenaline shot. Looks like it's good quality.
